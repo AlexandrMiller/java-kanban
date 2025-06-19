@@ -1,9 +1,11 @@
+package model;
+import util.enumConstant.*;
 import java.util.Objects;
 
 public class Task {
+    private int id;
     private String name;
     private String description;
-    private int id;
     private Enum status;
 
     public Task(String name, String description, Status status) {

@@ -1,18 +1,24 @@
-import java.util.HashMap;
+package model;
+import util.enumConstant.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+
+
+
 public class Epic extends Task {
-    private HashMap<Integer, SubTask> subTasksEpic = new HashMap<>() ;
+    private List<Integer> subTasksEpic = new ArrayList<>();
 
     public Epic(String name, String description) {
         super(name, description, Status.NEW);
     }
 
-    public HashMap<Integer, SubTask> getSubTasksEpic() {
+    public List<Integer> getSubTasksEpic() {
         return subTasksEpic;
     }
 
-    public void setSubTasksEpic(HashMap<Integer, SubTask> subTasksEpic) {
+    public void setSubTasksEpic(List<Integer> subTasksEpic) {
         if (subTasksEpic == null) {
             this.subTasksEpic.clear();
         } else {

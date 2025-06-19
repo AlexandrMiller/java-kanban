@@ -1,3 +1,5 @@
+package model;
+import util.enumConstant.Status;
 import java.util.Objects;
 
 public class SubTask extends Task {

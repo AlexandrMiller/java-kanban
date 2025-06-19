@@ -1,8 +1,12 @@
+import model.*;
+import Manager.*;
+import util.enumConstant.Status;
+
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Поехали!");
-        Managar manager = new Managar();
+        Manager manager = new Manager();
         Epic epic;
         SubTask subTask;
         Task task;
@@ -69,6 +73,7 @@ public class Main {
         manager.printTasks();
         manager.printEpics();
         manager.printSubTasks();
+
 
     }
 }
