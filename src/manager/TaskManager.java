@@ -10,49 +10,47 @@ import java.util.HashMap;
 public interface TaskManager {
 
 
-    public HashMap<Integer, Task> getTasks();
+     HashMap<Integer, Task> getTasks();
 
-    public HashMap<Integer, SubTask> getSubTasks();
+     HashMap<Integer, SubTask> getSubTasks();
 
-    public HashMap<Integer, Epic> getEpics();
+     HashMap<Integer, Epic> getEpics();
 
-    HashMap<Integer, SubTask> getSubTasksByEpicId(int id);
+     HashMap<Integer, SubTask> getSubTasksByEpicId(int id);
 
-    public List<Task> getHistory();
+     List<Task> getHistory();
 
+     int getId();
 
+     void deleteAllTasks();
 
-    int getId();
+     void deleteAllEpics();
 
-    void deleteAllTasks();
+     void deleteAllSubTasks();
 
-    void deleteAllEpics();
+     Task getTask(int id);
 
-    void deleteAllSubTasks();
+     SubTask getSubTask(int id);
 
-    Task getTask(int id);
+     Epic getEpic(int id);
 
-    SubTask getSubTask(int id);
+     void createTask(Task task);
 
-    Epic getEpic(int id);
+     void createSubTask(SubTask subTask);
 
-    void createTask(Task task);
+     void createEpic(Epic epic);
 
-    void createSubTask(SubTask subTask);
+     void deleteTask(int id);
 
-    void createEpic(Epic epic);
+     void deleteEpic(int id);
 
-    void deleteTask(int id);
+     void deleteSubTask(int id);
 
-    void deleteEpic(int id);
+     void updateTask(Task task);
 
-    void deleteSubTask(int id);
+     void updateSubTask(SubTask subTask);
 
-    void updateTask(Task task);
+     void updateEpic(Epic epic);
 
-    void updateSubTask(SubTask subTask);
-
-    void updateEpic(Epic epic);
-
-    void updateStatusEpic(Epic epic);
+     void updateStatusEpic(Epic epic);
 }
