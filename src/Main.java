@@ -13,20 +13,24 @@ public class Main {
         Task task;
         TaskManager taskManager = Managers.getDefault();
 
-        epic = new Epic("epic1","descriptionOfEpic1");
-        taskManager.createEpic(epic);
-        subTask = new SubTask("Subtask1","descr.Sub1",Status.NEW, epic.getId());
-        taskManager.createSubTask(subTask);
-        epic = new Epic("epic2","descrOfEpic2");
-        taskManager.createEpic(epic);
-        System.out.println(taskManager.getEpic(1));
-        System.out.println(taskManager.getEpic(1));
-        System.out.println(taskManager.getEpic(1));
-        System.out.println(taskManager.getEpic(1));
-        System.out.println(taskManager.getSubTask(2));
-        System.out.println(taskManager.getEpics());
+
+        task = new Task("task1", "decr1", Status.NEW);
+        taskManager.createTask(task);
+        task = new Task("task2", "decr2",Status.NEW);
+        taskManager.createTask(task);
+
+        System.out.println(taskManager.getTask(2));
+        System.out.println(taskManager.getTask(1));
+
         System.out.println("history:");
         System.out.println(taskManager.getHistory());
+        System.out.println("получаю повторный таск");
+
+        System.out.println(taskManager.getTask(2));
+
+        System.out.println("historyV2:");
+        System.out.println(taskManager.getHistory());
+
 
 
 

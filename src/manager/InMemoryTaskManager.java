@@ -166,6 +166,7 @@ public class InMemoryTaskManager implements TaskManager {
     public void deleteTask(int id) {
         if (tasks.get(id) != null) {
             tasks.remove(id);
+            historyManager.remove(id);
         } else {
             System.out.println("Задача не найдена.");
         }
@@ -179,6 +180,7 @@ public class InMemoryTaskManager implements TaskManager {
                 subTasks.remove(subTaskId);
             }
             epics.remove(id);
+            historyManager.remove(id);
         } else {
             System.out.println("Эпик не найден.");
         }
@@ -194,6 +196,7 @@ public class InMemoryTaskManager implements TaskManager {
                 updateStatusEpic(epic);
             }
             subTasks.remove(id);
+            historyManager.remove(id);
         } else {
             System.out.println("Подзадача не найдена.");
         }
