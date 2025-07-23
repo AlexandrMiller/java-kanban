@@ -1,18 +1,16 @@
-package test;
 import manager.*;
-
 import org.junit.jupiter.api.Test;
 import model.*;
 import util.enumConstant.Status;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryHistoryManagerTest {
 
     @Test
-    void historyManagerSaveTest(){
+    void historyManagerSaveTest() {
 
     }
+
     @Test
     void historyManagerShouldRetainOriginalTaskState() {
         HistoryManager historyManager = Managers.getDefaultHistory();

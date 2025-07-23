@@ -12,9 +12,10 @@ public class InMemoryTaskManager implements TaskManager {
     private HashMap<Integer, SubTask> subTasks = new HashMap<>();
     private HashMap<Integer, Epic> epics = new HashMap<>();
 
-    public  InMemoryTaskManager(){
+    public  InMemoryTaskManager() {
         historyManager = Managers.getDefaultHistory();
     }
+
     @Override
     public List<Task> getHistory() {
         return historyManager.getHistory();
@@ -25,13 +26,15 @@ public class InMemoryTaskManager implements TaskManager {
 
         return tasks;
     }
+
     @Override
     public HashMap<Integer, SubTask> getSubTasks() {
         return subTasks;
     }
-     @Override
+
+    @Override
     public HashMap<Integer, Epic> getEpics() {
-        for(Epic epics : epics.values()){
+        for (Epic epics : epics.values()) {
             historyManager.addToHistoryTask(epics);
         }
         return epics;
@@ -235,6 +238,7 @@ public class InMemoryTaskManager implements TaskManager {
             System.out.println("Эпик не найден.");
         }
     }
+
     @Override
     public void updateStatusEpic(Epic epic) {
         if (epic != null) {
@@ -270,9 +274,4 @@ public class InMemoryTaskManager implements TaskManager {
             }
         }
     }
-
-
-
-
-
 }

@@ -1,8 +1,6 @@
 import model.*;
 import manager.*;
 import util.enumConstant.Status;
-import java.util.List;
-import java.util.function.DoubleToIntFunction;
 
 public class Main {
 
@@ -30,15 +28,5 @@ public class Main {
 
         System.out.println("historyV2:");
         System.out.println(taskManager.getHistory());
-
-
-
-
-
-        /*Проверка работы методов для Задач*/
-
-
-
-
     }
 }

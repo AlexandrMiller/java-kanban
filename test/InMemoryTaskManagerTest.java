@@ -1,6 +1,3 @@
-package test;
-
-import manager.InMemoryHistoryManager;
 import manager.InMemoryTaskManager;
 import manager.Managers;
 import manager.TaskManager;
@@ -23,10 +20,10 @@ class InMemoryTaskManagerTest extends InMemoryTaskManager {
     @BeforeEach
     void setUp() {
     taskManager = Managers.getDefault();
-}
+    }
 
     @Test
-    void testManagerCreation(){
+    void testManagerCreation() {
         Task task = new Task("task","decr",Status.NEW);
         taskManager.createTask(task);
         assertNotNull(task);
@@ -46,5 +43,5 @@ class InMemoryTaskManagerTest extends InMemoryTaskManager {
 
 
 
-    }
+}
 

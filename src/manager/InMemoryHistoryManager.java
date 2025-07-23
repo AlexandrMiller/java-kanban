@@ -33,9 +33,10 @@ public class InMemoryHistoryManager implements HistoryManager {
             tail = node;
         }
     }
+
     @Override
     public void addToHistoryTask(Task task) {
-        if (historyMap.containsKey(task.getId())){
+        if (historyMap.containsKey(task.getId())) {
            removeNode(historyMap.get(task.getId()));
         }
         Node newNode = new Node(task);

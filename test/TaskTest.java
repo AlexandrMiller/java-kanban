@@ -1,4 +1,3 @@
-package test;
 import manager.Managers;
 import manager.TaskManager;
 import model.Epic;
@@ -28,8 +27,9 @@ class TaskTest {
 
         assertEquals(task1, task2);
     }
+
     @Test
-    void testEpicAreEqualById(){
+    void testEpicAreEqualById() {
         Epic epic = new Epic("epic1","decr2");
         epic.setId(1);
 
@@ -38,8 +38,9 @@ class TaskTest {
 
         assertEquals(epic,epic2);
     }
+
     @Test
-    void testSubtaskAreEqualsByUId(){
+    void testSubtaskAreEqualsByUId() {
         SubTask subTask = new SubTask("sub1","decr1",Status.NEW,1);
 
         SubTask subTask1 = new SubTask("sub1","decr1",Status.NEW,1);
@@ -54,6 +55,7 @@ class TaskTest {
         epic.setId(10);
 
     }
+
     @Test
     void subtaskCreationAndGettersShouldWork() {
         int epicId = 10;
@@ -64,8 +66,9 @@ class TaskTest {
         assertEquals(epicId, subtask.getEpicId());
         assertEquals(Status.NEW, subtask.getStatus());
     }
+
     @Test
-    void epicCreationAndGettersShouldWork(){
+    void epicCreationAndGettersShouldWork() {
        Epic epic = new Epic("epic","decr");
        epic.setId(1);
        assertEquals("epic", epic.getName());
@@ -75,7 +78,7 @@ class TaskTest {
     }
 
     @Test
-    void taskCreationAndGettersShouldWork(){
+    void taskCreationAndGettersShouldWork() {
         Task task = new Task("task","decr",Status.NEW);
         task.setId(1);
 

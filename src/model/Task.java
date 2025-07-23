@@ -1,6 +1,4 @@
 package model;
-import manager.InMemoryHistoryManager;
-import manager.InMemoryTaskManager;
 import util.enumConstant.*;
 import java.util.Objects;
 
@@ -40,6 +38,7 @@ public class Task {
     public void setId(int id) {
         this.id = id;
     }
+
     @Override
     public String toString() {
         return "Task{" +
