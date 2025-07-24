@@ -1,26 +1,13 @@
 package manager;
 import model.Task;
-
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
+
 public class InMemoryHistoryManager implements HistoryManager {
 
-   private HashMap<Integer,Node> historyMap = new HashMap<>();
-
-    public static class Node {
-        Task task;
-        Node next;
-        Node prev;
-
-        Node(Task task) {
-            this.task = task;
-        }
-    }
-
-
+    private HashMap<Integer,Node> historyMap = new HashMap<>();
     private Node head;
     private Node tail;
 
@@ -28,8 +15,8 @@ public class InMemoryHistoryManager implements HistoryManager {
         if (tail == null) {
             head = tail = node;
         } else {
-            tail.next = node;
-            node.prev = tail;
+            tail.setNext(node);
+            node.setPrev(tail);
             tail = node;
         }
     }
@@ -47,22 +34,19 @@ public class InMemoryHistoryManager implements HistoryManager {
     private void removeNode(Node node) {
         if (node == null) return;
 
-        if (node.prev != null) {
-            node.prev.next = node.next;
+        if (node.getPrev() != null) {
+            node.getPrev().setNext(node.getNext());
         } else {
-
-            head = node.next;
+            head = node.getNext();
         }
 
-        if (node.next != null) {
-            node.next.prev = node.prev;
+        if (node.getNext() != null) {
+            node.getNext().setPrev(node.getPrev());
         } else {
-
-            tail = node.prev;
+            tail = node.getPrev();
         }
 
-
-        historyMap.remove(node.task.getId());
+        historyMap.remove(node.getTask().getId());
     }
 
 
@@ -71,14 +55,11 @@ public class InMemoryHistoryManager implements HistoryManager {
         List<Task> history = new ArrayList<>();
         Node current = head;
         while (current != null) {
-            history.add(current.task);
-            current = current.next;
+            history.add(current.getTask());
+            current = current.getNext();
         }
         return history;
     }
-
-
-
 
     @Override
     public void remove(int id) {
@@ -87,7 +68,6 @@ public class InMemoryHistoryManager implements HistoryManager {
             removeNode(nodeToRemove);
         }
     }
-
-
-
 }
+
+
