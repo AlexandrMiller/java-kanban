@@ -110,7 +110,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
       Status status = Status.valueOf(taskData[3]);
       String description = taskData[4];
       Integer epicId = 0;
-      if (taskData.length > 5){
+      if (taskData.length > 5) {
       String epicIdString = taskData[5];
         if (!epicIdString.isEmpty()) {
             epicId = Integer.valueOf(epicIdString);
