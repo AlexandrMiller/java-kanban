@@ -1,5 +1,5 @@
 package model;
-import util.enumConstant.Status;
+import util.enumConstant.*;
 import java.util.Objects;
 
 public class SubTask extends Task {
@@ -12,6 +12,11 @@ public class SubTask extends Task {
 
     public int getEpicId() {
         return epicId;
+    }
+
+    @Override
+    public Types getType() {
+        return Types.SUBTASK;
     }
 
     public void setEpicId(int epicId) {

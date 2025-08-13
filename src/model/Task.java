@@ -39,6 +39,10 @@ public class Task {
         this.id = id;
     }
 
+    public Types getType() {
+        return Types.TASK;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
