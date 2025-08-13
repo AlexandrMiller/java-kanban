@@ -1,12 +1,10 @@
 package manager;
-
 import model.Epic;
 import model.SubTask;
 import model.Task;
 import java.util.List;
 import java.util.Map;
 
-import java.util.HashMap;
 
 public interface TaskManager {
 
