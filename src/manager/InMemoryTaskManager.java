@@ -3,14 +3,15 @@ import java.util.List;
 import java.util.HashMap;
 import model.*;
 import util.enumConstant.*;
+import java.util.Map;
 
 
 public class InMemoryTaskManager implements TaskManager {
     private int id;
     private HistoryManager historyManager;
-    private HashMap<Integer, Task> tasks = new HashMap<>();
-    private HashMap<Integer, SubTask> subTasks = new HashMap<>();
-    private HashMap<Integer, Epic> epics = new HashMap<>();
+    private Map<Integer, Task> tasks = new HashMap<>();
+    private Map<Integer, SubTask> subTasks = new HashMap<>();
+    private Map<Integer, Epic> epics = new HashMap<>();
 
 
     public  InMemoryTaskManager() {
@@ -23,18 +24,18 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public HashMap<Integer, Task> getTasks() {
+    public Map<Integer, Task> getTasks() {
 
         return tasks;
     }
 
     @Override
-    public HashMap<Integer, SubTask> getSubTasks() {
+    public Map<Integer, SubTask> getSubTasks() {
         return subTasks;
     }
 
     @Override
-    public HashMap<Integer, Epic> getEpics() {
+    public Map<Integer, Epic> getEpics() {
         for (Epic epics : epics.values()) {
             historyManager.addToHistoryTask(epics);
         }
@@ -43,12 +44,12 @@ public class InMemoryTaskManager implements TaskManager {
 
 
     @Override
-    public HashMap<Integer, SubTask> getSubTasksByEpicId(int id) {
+    public Map<Integer, SubTask> getSubTasksByEpicId(int id) {
         Epic epic = epics.get(id);
         if (epic == null) {
             return null;
         }
-        HashMap<Integer, SubTask> result = new HashMap<>();
+        Map<Integer, SubTask> result = new HashMap<>();
         for (Integer subTaskId : epic.getSubTasksEpic()) {
             SubTask subTask = subTasks.get(subTaskId);
             if (subTask != null) {

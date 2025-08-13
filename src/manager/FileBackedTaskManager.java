@@ -98,6 +98,9 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
               result += task.getId() + "," + task.getType() + "," + task.getName() + "," + task.getStatus() + "," +
                       task.getDescription() + "," + getSubTask(task.getId()).getEpicId();
               break;
+
+          default:
+              return null;
       }
       return result;
   }

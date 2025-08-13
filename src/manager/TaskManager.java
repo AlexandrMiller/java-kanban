@@ -4,19 +4,20 @@ import model.Epic;
 import model.SubTask;
 import model.Task;
 import java.util.List;
+import java.util.Map;
 
 import java.util.HashMap;
 
 public interface TaskManager {
 
 
-     HashMap<Integer, Task> getTasks();
+     Map<Integer, Task> getTasks();
 
-     HashMap<Integer, SubTask> getSubTasks();
+     Map<Integer, SubTask> getSubTasks();
 
-     HashMap<Integer, Epic> getEpics();
+     Map<Integer, Epic> getEpics();
 
-     HashMap<Integer, SubTask> getSubTasksByEpicId(int id);
+     Map<Integer, SubTask> getSubTasksByEpicId(int id);
 
      List<Task> getHistory();
 
