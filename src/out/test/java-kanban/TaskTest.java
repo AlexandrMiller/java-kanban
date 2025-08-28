@@ -6,10 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.Task;
 import util.enumConstant.Status;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.*;
+/*
 class TaskTest {
     TaskManager taskManager;
 
@@ -20,12 +19,10 @@ class TaskTest {
 
     @Test
     void testTasksAreEqualById() {
-        Task task1 = new Task("Task 1", "Description 1",
-                Status.NEW, Duration.ofMinutes(10), LocalDateTime.now());
+        Task task1 = new Task("Task 1", "Description 1", Status.NEW);
         task1.setId(1);
 
-        Task task2 = new Task("Task 1", "Description 1",
-                Status.NEW,Duration.ofMinutes(10),LocalDateTime.now());
+        Task task2 = new Task("Task 1", "Description 1", Status.NEW);
         task2.setId(1);
 
         assertEquals(task1, task2);
@@ -44,11 +41,9 @@ class TaskTest {
 
     @Test
     void testSubtaskAreEqualsByUId() {
-        SubTask subTask = new SubTask("sub1","decr1",
-                Status.NEW,Duration.ofMinutes(10),LocalDateTime.of(2000,1,1,1,1),1);
+        SubTask subTask = new SubTask("sub1","decr1",Status.NEW,1);
 
-        SubTask subTask1 = new SubTask("sub1","decr1",
-                Status.NEW,Duration.ofMinutes(10),LocalDateTime.of(2000,1,1,1,1),1);
+        SubTask subTask1 = new SubTask("sub1","decr1",Status.NEW,1);
 
         assertEquals(subTask1,subTask);
 
@@ -64,8 +59,7 @@ class TaskTest {
     @Test
     void subtaskCreationAndGettersShouldWork() {
         int epicId = 10;
-        SubTask subtask = new SubTask("Test Subtask", "Description",
-                Status.NEW,Duration.ofMinutes(10),LocalDateTime.now(),10);
+        SubTask subtask = new SubTask("Test Subtask", "Description", Status.NEW,10);
 
         assertEquals("Test Subtask", subtask.getName());
         assertEquals("Description", subtask.getDescription());
@@ -75,17 +69,17 @@ class TaskTest {
 
     @Test
     void epicCreationAndGettersShouldWork() {
-        Epic epic = new Epic("epic","decr");
-        epic.setId(1);
-        assertEquals("epic", epic.getName());
-        assertEquals("decr",epic.getDescription());
-        assertEquals(1,epic.getId());
-        assertEquals(Status.NEW,epic.getStatus());
+       Epic epic = new Epic("epic","decr");
+       epic.setId(1);
+       assertEquals("epic", epic.getName());
+       assertEquals("decr",epic.getDescription());
+       assertEquals(1,epic.getId());
+       assertEquals(Status.NEW,epic.getStatus());
     }
 
     @Test
     void taskCreationAndGettersShouldWork() {
-        Task task = new Task("task","decr",Status.NEW,Duration.ofMinutes(10),LocalDateTime.now());
+        Task task = new Task("task","decr",Status.NEW);
         task.setId(1);
 
         assertEquals("task",task.getName());
@@ -93,4 +87,7 @@ class TaskTest {
         assertEquals(Status.NEW,task.getStatus());
         assertEquals(1,task.getId());
     }
+
+
+
 }

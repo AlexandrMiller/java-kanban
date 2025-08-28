@@ -1,14 +1,10 @@
 import manager.*;
-//import model.Epic;
-//import model.SubTask;
-//import model.Task;
-//import util.enumConstant.Status;
 import java.io.*;
 
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         File file = new File("C:/Users/mille/sprint5/java-kanban/text.csv");
         try {
@@ -22,7 +18,6 @@ public class Main {
         }
 
         FileBackedTaskManager ff = FileBackedTaskManager.loadFromFile(file);
-
         /* Task task = new Task("task","descr",Status.NEW,Duration.ofMinutes(60),LocalDateTime.of(2000,2,2,10,0));
         ff.createTask(task);
         Epic epic = new Epic("epic","descrofepic");
