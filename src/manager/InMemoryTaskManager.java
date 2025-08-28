@@ -2,8 +2,6 @@ package manager;
 import java.util.*;
 import java.time.LocalDateTime;
 import java.time.Duration;
-import java.util.stream.Collectors;
-
 import model.*;
 import util.enumConstant.*;
 
@@ -44,7 +42,8 @@ public class InMemoryTaskManager implements TaskManager {
     public boolean isOverlap(Task task) {
         boolean overlap = false;
         for (Task ss : getPrioritizedTasksWithoutEpics()) {
-            boolean isOverlap = task.getStartTime().isBefore(ss.getStartTime()) && task.getEndTime().isBefore(ss.getStartTime()) ||
+            boolean isOverlap = task.getStartTime().isBefore(ss.getStartTime()) &&
+                    task.getEndTime().isBefore(ss.getStartTime()) ||
                     task.getStartTime().isAfter(ss.getStartTime()) && task.getStartTime().isAfter(ss.getEndTime());
             if (isOverlap) {
                overlap = false;
@@ -57,7 +56,7 @@ public class InMemoryTaskManager implements TaskManager {
     public LocalDateTime getEndTimeOfEpic(Epic epic) {
         LocalDateTime endTime = null;
         for (SubTask sub : getSubTasksByEpicId(epic.getId()).values()) {
-            if(endTime == null || sub.getEndTime().isAfter(endTime)) {
+            if (endTime == null || sub.getEndTime().isAfter(endTime)) {
                 endTime = sub.getEndTime();
             }
         } return endTime;
@@ -90,7 +89,7 @@ public class InMemoryTaskManager implements TaskManager {
     public void updateStartTimeEpic(Epic epic) {
         LocalDateTime minTime = null;
         for (SubTask sub : getSubTasksByEpicId(epic.getId()).values()) {
-            if(minTime == null || sub.getStartTime().isBefore(minTime)) {
+            if (minTime == null || sub.getStartTime().isBefore(minTime)) {
                 minTime = sub.getStartTime();
             }
         }
