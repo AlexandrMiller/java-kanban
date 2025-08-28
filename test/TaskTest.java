@@ -21,11 +21,11 @@ class TaskTest {
     @Test
     void testTasksAreEqualById() {
         Task task1 = new Task("Task 1", "Description 1",
-                Status.NEW, Duration.ofMinutes(10), LocalDateTime.now());
+                Status.NEW, Duration.ofMinutes(10), LocalDateTime.of(2000,1,1,1,1));
         task1.setId(1);
 
         Task task2 = new Task("Task 1", "Description 1",
-                Status.NEW,Duration.ofMinutes(10),LocalDateTime.now());
+                Status.NEW,Duration.ofMinutes(10),LocalDateTime.of(2000,1,1,1,1));
         task2.setId(1);
 
         assertEquals(task1, task2);
@@ -35,9 +35,11 @@ class TaskTest {
     void testEpicAreEqualById() {
         Epic epic = new Epic("epic1","decr2");
         epic.setId(1);
+        epic.setStartTime(LocalDateTime.of(2000,1,1,1,1));
 
         Epic epic2 = new Epic("epic1","decr2");
         epic2.setId(1);
+        epic2.setStartTime(LocalDateTime.of(2000,1,1,1,1));
 
         assertEquals(epic,epic2);
     }
