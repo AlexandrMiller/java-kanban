@@ -29,7 +29,7 @@ class InMemoryTaskManagerTest extends InMemoryTaskManager {
         assertNotNull(epic);
         assertEquals(2,epic.getId());
 
-        SubTask subTask = new SubTask("subtask","decr",Status.NEW,Duration.ofMinutes(10),LocalDateTime.now(), epic.getId());
+        SubTask subTask = new SubTask("subtask","decr",Status.NEW,Duration.ofMinutes(10),LocalDateTime.now().plus(Duration.ofMinutes(1000)), epic.getId());
         taskManager.createSubTask(subTask);
         assertNotNull(subTask);
         assertEquals(3,subTask.getId());
