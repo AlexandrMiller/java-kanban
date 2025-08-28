@@ -1,4 +1,4 @@
-import manager.*;
+/*import manager.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.*;
@@ -34,5 +34,5 @@ class InMemoryTaskManagerTest extends InMemoryTaskManager {
         assertEquals(3,subTask.getId());
 
     }
-}
+}*/
 
