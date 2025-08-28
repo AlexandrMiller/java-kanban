@@ -13,7 +13,7 @@ class InMemoryTaskManagerTest extends InMemoryTaskManager {
 
     @BeforeEach
     void setUp() {
-    taskManager = Managers.getDefault();
+        taskManager = Managers.getDefault();
     }
 
     @Test

@@ -14,6 +14,5 @@ class ManagersTest {
         assertNotNull(manager);
         assertNotNull(history);
     }
-    //Managers возвращает проинициализированные объекты
 
 }
