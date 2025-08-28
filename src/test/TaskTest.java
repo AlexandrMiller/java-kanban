@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.Task;
 import util.enumConstant.Status;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -90,7 +89,4 @@ class TaskTest {
         assertEquals(Status.NEW,task.getStatus());
         assertEquals(1,task.getId());
     }
-
-
-
 }

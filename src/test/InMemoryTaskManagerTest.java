@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import model.*;
 import util.enumConstant.Status;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -35,8 +34,5 @@ class InMemoryTaskManagerTest extends InMemoryTaskManager {
         assertEquals(3,subTask.getId());
 
     }
-
-
-
 }
 
