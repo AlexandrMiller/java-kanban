@@ -130,7 +130,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
       Types type = Types.valueOf(taskData[1]);
       String name = taskData[2];
       Status status = Status.valueOf(taskData[3]);
-      Duration duration = Duration.parse(taskData[4]) ;
+      Duration duration = Duration.parse(taskData[4]);
       LocalDateTime startTime = LocalDateTime.parse(taskData[5]);
       String description = taskData[6];
       Integer epicId = 0;
