@@ -1,4 +1,5 @@
-id,type,name,status,description,epic
-1,TASK,task1,DONE,descr1
-2,EPIC,epic1,NEW,descrEpic
-3,SUBTASK,sub1,NEW,descrSub,2
+id,type,name,status,duration,startTime,description,epic
+1,TASK,task,NEW,PT1H,2000-02-02T10:00,descr
+2,EPIC,epic,IN_PROGRESS,PT2H,2025-01-01T10:00,descrofepic
+3,SUBTASK,sub,NEW,PT1H,2025-01-01T10:00,descrofsub,2
+4,SUBTASK,sub3,DONE,PT1H,2025-02-01T10:00,descrofsub3,2
