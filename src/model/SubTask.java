@@ -1,12 +1,15 @@
 package model;
 import util.enumConstant.*;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class SubTask extends Task {
     private int epicId;
 
-    public SubTask(String name, String description, Status status, int epicId) {
-        super(name, description, status);
+    public SubTask(String name, String description, Status status, Duration duration, LocalDateTime startTime, int epicId) {
+        super(name,description,status,duration,startTime);
         this.epicId = epicId;
     }
 
@@ -31,6 +34,8 @@ public class SubTask extends Task {
                 ", id=" + getId() +
                 ", status=" + getStatus() +
                 ", epicId=" + epicId +
+                ", startTime=" + getStartTime() +
+                ", duration=" + getDuration() +
                 '}';
     }
 

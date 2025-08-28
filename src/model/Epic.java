@@ -1,5 +1,7 @@
 package model;
 import util.enumConstant.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -8,10 +10,12 @@ import java.util.Objects;
 
 
 public class Epic extends Task {
+    private LocalDateTime endTime;
     private List<Integer> subTasksEpic = new ArrayList<>();
 
     public Epic(String name, String description) {
-        super(name, description, Status.NEW);
+        super(name,description,Status.NEW,Duration.ofMinutes(0),LocalDateTime.now());
+
     }
 
     public List<Integer> getSubTasksEpic() {
@@ -26,6 +30,14 @@ public class Epic extends Task {
         }
     }
 
+   // @Override
+   // public LocalDateTime getEndTime() {
+      //  return endTime;
+   // }
+
+    public void setEndTime(LocalDateTime time) {
+        this.endTime = time;
+    }
 
     @Override
     public Types getType() {
@@ -39,6 +51,8 @@ public class Epic extends Task {
                 ", description='" + getDescription() + '\'' +
                 ", id=" + getId() +
                 ", status=" + getStatus() +
+                ", duration=" + getDuration() +
+                ", startTime=" + getStartTime() +
                 ", subTasksEpic=" + subTasksEpic +
                 '}';
     }

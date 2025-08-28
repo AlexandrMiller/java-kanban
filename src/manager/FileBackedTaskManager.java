@@ -1,16 +1,16 @@
 package manager;
 import model.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Map;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.*;
+
 import exceptions.ManagerSaveException;
 import util.enumConstant.*;
-import java.util.List;
-
 
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
-  private final String header = "id,type,name,status,description,epic\n";
+  private final String header = "id,type,name,status,duration,startTime,description,epic\n";
   private File saveFile;
 
 
@@ -24,6 +24,21 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
   public void createTask(Task task) {
       super.createTask(task);
       save();
+  }
+
+  @Override
+  public Task getTask(int id) {
+      return super.getTask(id);
+  }
+
+  @Override
+  public LocalDateTime getEndTimeOfEpic(Epic epic) {
+      return super.getEndTimeOfEpic(epic);
+  }
+
+  @Override
+  public SubTask getSubTask(int id) {
+      return super.getSubTask(id);
   }
 
 
@@ -85,18 +100,22 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
       switch (task.getType()) {
 
           case TASK:
-              result += task.getId() + "," + task.getType() + "," + task.getName() + "," + task.getStatus() + "," +
-                   task.getDescription();
+              result += task.getId() + "," + task.getType() + "," + task.getName() + "," +
+                        task.getStatus() + "," + task.getDuration() + "," + task.getStartTime() + "," +
+                        task.getDescription();
               break;
 
           case EPIC:
-              result += task.getId() + "," + task.getType() + "," + task.getName() + "," + task.getStatus() + "," +
-                      task.getDescription();
+              result += task.getId() + "," + task.getType() + "," + task.getName() + "," +
+                        task.getStatus() + "," + task.getDuration() + "," + task.getStartTime() + "," +
+                        task.getDescription();
               break;
 
           case SUBTASK:
-              result += task.getId() + "," + task.getType() + "," + task.getName() + "," + task.getStatus() + "," +
-                      task.getDescription() + "," + getSubTask(task.getId()).getEpicId();
+              result += task.getId() + "," + task.getType() + "," +
+                        task.getName() + "," + task.getStatus() + "," +
+                        task.getDuration() + "," + task.getStartTime() + "," +
+                        task.getDescription() + "," + getSubTask(task.getId()).getEpicId();
               break;
 
           default:
@@ -111,10 +130,12 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
       Types type = Types.valueOf(taskData[1]);
       String name = taskData[2];
       Status status = Status.valueOf(taskData[3]);
-      String description = taskData[4];
+      Duration duration = Duration.parse(taskData[4]) ;
+      LocalDateTime startTime = LocalDateTime.parse(taskData[5]);
+      String description = taskData[6];
       Integer epicId = 0;
-      if (taskData.length > 5) {
-      String epicIdString = taskData[5];
+      if (taskData.length > 7) {
+      String epicIdString = taskData[7];
         if (!epicIdString.isEmpty()) {
             epicId = Integer.valueOf(epicIdString);
         }
@@ -123,12 +144,12 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
       switch (type) {
           case TASK:
-              Task task = new Task(name,description,status);
+              Task task = new Task(name,description,status,duration,startTime);
               task.setId(id);
               return task;
 
           case SUBTASK:
-              SubTask subTask = new SubTask(name,description,status,epicId);
+              SubTask subTask = new SubTask(name,description,status,duration,startTime,epicId);
               subTask.setId(id);
               return subTask;
 
@@ -145,6 +166,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
     public static FileBackedTaskManager loadFromFile(File file) {
         TaskManager taskManager = Managers.getDefault();
+
 
         FileBackedTaskManager fileBackedTaskManager = new FileBackedTaskManager(file);
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
