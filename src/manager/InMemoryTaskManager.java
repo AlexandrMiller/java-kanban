@@ -50,7 +50,8 @@ public class InMemoryTaskManager implements TaskManager {
             } else {
                 overlap = true;
             }
-        } return overlap;
+        }
+        return overlap;
     }
 
     public LocalDateTime getEndTimeOfEpic(Epic epic) {
@@ -59,7 +60,8 @@ public class InMemoryTaskManager implements TaskManager {
             if (endTime == null || sub.getEndTime().isAfter(endTime)) {
                 endTime = sub.getEndTime();
             }
-        } return endTime;
+        }
+        return endTime;
     }
 
     public  InMemoryTaskManager() {
