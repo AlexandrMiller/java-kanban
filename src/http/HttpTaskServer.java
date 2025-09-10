@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
 
 public class HttpTaskServer {
    private static final int port = 8080;
-   InMemoryTaskManager manager;
-   HttpServer httpServer;
-   BaseHttpHandler bsh = new BaseHttpHandler();
-   Gson gson = new GsonBuilder()
+   private InMemoryTaskManager manager;
+   private final HttpServer httpServer;
+   private final BaseHttpHandler bsh = new BaseHttpHandler();
+   private final Gson gson = new GsonBuilder()
            .registerTypeAdapter(LocalDateTime.class, new LocalDateAdapter())
            .registerTypeAdapter(Duration.class, new DurationAdapter())
            .registerTypeHierarchyAdapter(Enum.class, new EnumAdapter<>())
