@@ -1,11 +1,7 @@
+import HttpServerAndUtils.HttpTaskServer;
 import manager.*;
-import model.Task;
-import util.enumConstant.Status;
 
-import javax.imageio.IIOException;
 import java.io.*;
-import java.time.Duration;
-import java.time.LocalDateTime;
 
 
 public class Main {
@@ -13,13 +9,10 @@ public class Main {
     public static void main(String[] args) {
         InMemoryTaskManager manager = Managers.getDefault();
         try {
-           // Task task = new Task("task","descr", Status.NEW, Duration.ofMinutes(60), LocalDateTime.of(2000,2,2,10,0));
-//manager.createTask(task);
-        HttpTaskServer ss = new HttpTaskServer(manager);
 
-        }
-        catch (IOException e) {
-            e.getMessage();
+        HttpTaskServer ss = new HttpTaskServer(manager);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
 
        // File file = new File("C:/Users/mille/sprint5/java-kanban/text.csv");

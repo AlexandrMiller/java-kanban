@@ -1,4 +1,4 @@
-package manager;
+package HttpServerAndUtils;
 
 import com.google.gson.*;
 

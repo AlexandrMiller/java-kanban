@@ -1,9 +1,10 @@
-package manager;
-
+package HttpServerAndUtils;
 import com.google.gson.*;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import manager.FileBackedTaskManager;
+import manager.InMemoryTaskManager;
 import model.Epic;
 import model.SubTask;
 import model.Task;
@@ -19,8 +20,8 @@ public class HttpTaskServer {
    InMemoryTaskManager manager;
    HttpServer httpServer;
    BaseHttpHandler bsh = new BaseHttpHandler();
-   Gson gson = new GsonBuilder().
-           registerTypeAdapter(LocalDateTime.class, new LocalDateAdapter())
+   Gson gson = new GsonBuilder()
+           .registerTypeAdapter(LocalDateTime.class, new LocalDateAdapter())
            .registerTypeAdapter(Duration.class, new DurationAdapter())
            .registerTypeHierarchyAdapter(Enum.class, new EnumAdapter<>())
            .create();
@@ -51,7 +52,7 @@ public class HttpTaskServer {
                createTaskOrUpdate(exchange);
                break;
             case "DELETE":
-               DeleteTasks(exchange);
+               deleteTasks(exchange);
                break;
             default:
                exchange.sendResponseHeaders(405, -1);
@@ -305,7 +306,7 @@ public class HttpTaskServer {
       }
    }
 
-   public void DeleteTasks(HttpExchange exchange) throws IOException {
+   public void deleteTasks(HttpExchange exchange) throws IOException {
       try {
          String[] splitURI = exchange.getRequestURI().getPath().split("/");
          int id = Integer.parseInt(splitURI[2]);
@@ -318,18 +319,3 @@ public class HttpTaskServer {
    }
 }
 
-
-class BaseHttpHandler {
-
-   public BaseHttpHandler() {
-
-   }
-
-   public void sendText(HttpExchange e,String text, int statusCode) throws IOException {
-      byte[] response = text.getBytes(StandardCharsets.UTF_8);
-      e.getResponseHeaders().set("Content-Type", "application/json;charset=utf-8");
-      e.sendResponseHeaders(statusCode,response.length);
-      e.getResponseBody().write(response);
-      e.close();
-   }
-}

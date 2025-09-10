@@ -1,4 +1,4 @@
-package manager;
+package HttpServerAndUtils;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class LocalDateAdapter extends TypeAdapter<LocalDateTime> {
+public class LocalDateAdapter extends TypeAdapter<LocalDateTime> {
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
     @Override
